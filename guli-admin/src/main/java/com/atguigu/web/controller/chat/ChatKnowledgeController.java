@@ -102,4 +102,28 @@ public class ChatKnowledgeController extends BaseController
     {
         return toAjax(chatKnowledgeService.deleteChatKnowledgeByKnowledgeIds(knowledgeIds));
     }
+
+    /**
+     * 根据项目id查询已有的知识库列表
+     */
+    @PreAuthorize("@ss.hasPermi('chat:knowledge:queryVo')")
+    @GetMapping
+    public TableDataInfo getInfoByProjectId(ChatKnowledge chatKnowledge)
+    {
+        // 分页查询
+        startPage();
+        List<ChatKnowledge> list = chatKnowledgeService.selectChatKnowledgeList(chatKnowledge);
+        return getDataTable(list);
+    }
+
+//    @PreAuthorize("@ss.hasPermi('chat:knowledge:add')")
+//    @PostMapping("upload")
+//    public AjaxResult upload(ChatKnowledge chatKnowledge, @RequestParam("file") MultipartFile file){
+//        this.aiService.upload(chatKnowledge, file);
+//        return success();
+//    }
+
+    /**
+     * 删除知识库：删除mysql中的数据(id)，删除向量数据库中的数据(knowledgeId)
+     */
 }

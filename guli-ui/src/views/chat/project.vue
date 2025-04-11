@@ -170,7 +170,8 @@ export default {
     return {
       models: [
         "openai gpt-3.5-turbo",
-        "ollama qwen2:7b"
+        "ollama qwen2.5:7b",
+        "deepseek"
       ],
       fileList: [],
       fileData: {},

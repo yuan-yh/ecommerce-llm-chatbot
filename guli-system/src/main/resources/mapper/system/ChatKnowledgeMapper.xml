@@ -23,7 +23,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <select id="selectChatKnowledgeList" parameterType="ChatKnowledge" resultMap="ChatKnowledgeResult">
         <include refid="selectChatKnowledgeVo"/>
-        <where>  
+        <where>
+            <!-- 动态sql如果projectid则根据projectid进行查询 -->
+            <if test="projectId != null">
+                project_id = #{projectId}
+            </if>
         </where>
     </select>
     
