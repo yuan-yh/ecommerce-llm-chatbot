@@ -1,7 +1,8 @@
-package com.atguigu.chat.controller;
+package com.atguigu.web.controller.chat;
 
 import java.util.List;
-import javax.servlet.http.HttpServletResponse;
+
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +17,8 @@ import com.atguigu.common.annotation.Log;
 import com.atguigu.common.core.controller.BaseController;
 import com.atguigu.common.core.domain.AjaxResult;
 import com.atguigu.common.enums.BusinessType;
-import com.atguigu.chat.domain.ChatKnowledge;
-import com.atguigu.chat.service.IChatKnowledgeService;
+import com.atguigu.system.domain.ChatKnowledge;
+import com.atguigu.system.service.IChatKnowledgeService;
 import com.atguigu.common.utils.poi.ExcelUtil;
 import com.atguigu.common.core.page.TableDataInfo;
 
