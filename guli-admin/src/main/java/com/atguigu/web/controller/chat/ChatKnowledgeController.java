@@ -10,7 +10,7 @@ import com.atguigu.common.annotation.Log;
 import com.atguigu.common.core.controller.BaseController;
 import com.atguigu.common.core.domain.AjaxResult;
 import com.atguigu.common.enums.BusinessType;
-import com.atguigu.guli.ai.domain.ChatKnowledge;
+import com.atguigu.system.domain.ChatKnowledge;
 import com.atguigu.system.service.IChatKnowledgeService;
 import com.atguigu.common.utils.poi.ExcelUtil;
 import com.atguigu.common.core.page.TableDataInfo;
@@ -113,8 +113,8 @@ public class ChatKnowledgeController extends BaseController
     @PreAuthorize("@ss.hasPermi('chat:knowledge:add')")
     @PostMapping("upload")
     public AjaxResult upload(ChatKnowledge chatKnowledge, @RequestParam("file") MultipartFile file){
-//        this.aiService.upload(chatKnowledge, file);
-        this.chatKnowledgeService.upload(chatKnowledge, file);
+        this.aiService.upload(chatKnowledge, file);
+//        this.chatKnowledgeService.upload(chatKnowledge, file);
         return success();
     }
 

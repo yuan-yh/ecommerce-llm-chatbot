@@ -5,14 +5,12 @@ import com.atguigu.common.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.atguigu.system.mapper.ChatProjectMapper;
-import com.atguigu.guli.ai.domain.ChatProject;
+import com.atguigu.system.domain.ChatProject;
 import com.atguigu.system.service.IChatProjectService;
 
 /**
  * 项目配置Service业务层处理
- * 
- * @author lixianfeng
- * @date 2025-04-11
+ *
  */
 @Service
 public class ChatProjectServiceImpl implements IChatProjectService 

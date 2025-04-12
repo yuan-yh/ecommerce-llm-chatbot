@@ -39,10 +39,9 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
-        <!-- 通用工具-->
         <dependency>
             <groupId>com.atguigu</groupId>
-            <artifactId>guli-common</artifactId>
+            <artifactId>guli-system</artifactId>
         </dependency>
 
         <dependency>

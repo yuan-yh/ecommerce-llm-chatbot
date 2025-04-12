@@ -1,14 +1,12 @@
 package com.atguigu.system.mapper;
 
-import com.atguigu.guli.ai.domain.ChatKnowledge;
+import com.atguigu.system.domain.ChatKnowledge;
 
 import java.util.List;
 
 /**
  * 知识库管理Mapper接口
- * 
- * @author lixianfeng
- * @date 2025-04-11
+ *
  */
 public interface ChatKnowledgeMapper 
 {

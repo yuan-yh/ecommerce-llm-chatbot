@@ -1,4 +1,4 @@
-package com.atguigu.guli.ai.domain;
+package com.atguigu.system.domain;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;

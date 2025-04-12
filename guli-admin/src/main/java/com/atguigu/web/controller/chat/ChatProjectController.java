@@ -17,7 +17,7 @@ import com.atguigu.common.annotation.Log;
 import com.atguigu.common.core.controller.BaseController;
 import com.atguigu.common.core.domain.AjaxResult;
 import com.atguigu.common.enums.BusinessType;
-import com.atguigu.guli.ai.domain.ChatProject;
+import com.atguigu.system.domain.ChatProject;
 import com.atguigu.system.service.IChatProjectService;
 import com.atguigu.common.utils.poi.ExcelUtil;
 import com.atguigu.common.core.page.TableDataInfo;

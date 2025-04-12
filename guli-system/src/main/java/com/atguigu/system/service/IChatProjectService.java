@@ -1,13 +1,11 @@
 package com.atguigu.system.service;
 
 import java.util.List;
-import com.atguigu.guli.ai.domain.ChatProject;
+import com.atguigu.system.domain.ChatProject;
 
 /**
  * 项目配置Service接口
- * 
- * @author lixianfeng
- * @date 2025-04-11
+ *
  */
 public interface IChatProjectService 
 {
