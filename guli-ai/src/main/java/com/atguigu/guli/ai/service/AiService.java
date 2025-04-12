@@ -3,6 +3,7 @@ package com.atguigu.guli.ai.service;
 import com.atguigu.guli.ai.domain.ChatKnowledge;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.vectorstore.VectorStore;
+import org.springframework.ai.vectorstore.qdrant.QdrantVectorStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +18,11 @@ import java.util.Map;
 public class AiService {
 
     @Autowired
-    private VectorStore vectorStore;
+//    private VectorStore vectorStore;
+    private QdrantVectorStore openAiVectorStore;
+    private QdrantVectorStore ollamaVectorStore;
 
     public void saveKnowledge(ChatKnowledge chatKnowledge) {
-        this.vectorStore.add(List.of(new Document(chatKnowledge.getContent(), Map.of("projectId", chatKnowledge.getProjectId(), "knowldgeId", chatKnowledge.getKnowledgeId()))));
+        this.ollamaVectorStore.add(List.of(new Document(chatKnowledge.getContent(), Map.of("projectId", chatKnowledge.getProjectId(), "knowldgeId", chatKnowledge.getKnowledgeId()))));
     }
 }
