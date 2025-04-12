@@ -7,7 +7,7 @@ import com.atguigu.guli.ai.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.atguigu.system.mapper.ChatKnowledgeMapper;
-import com.atguigu.system.domain.ChatKnowledge;
+import com.atguigu.guli.ai.domain.ChatKnowledge;
 import com.atguigu.system.service.IChatKnowledgeService;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -110,6 +110,6 @@ public class ChatKnowledgeServiceImpl implements IChatKnowledgeService
         this.chatKnowledgeMapper.insertChatKnowledge(chatKnowledge);
 
         // save in the vector db (qdrant)
-//        this.aiService.saveKnowledge(chatKnowledge.getProjectId(), chatKnowledge.getKnowledgeId(), content);
+        this.aiService.saveKnowledge(chatKnowledge);
     }
 }

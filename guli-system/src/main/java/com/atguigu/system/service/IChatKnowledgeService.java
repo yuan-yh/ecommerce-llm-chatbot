@@ -1,7 +1,7 @@
 package com.atguigu.system.service;
 
 import java.util.List;
-import com.atguigu.system.domain.ChatKnowledge;
+import com.atguigu.guli.ai.domain.ChatKnowledge;
 import org.springframework.web.multipart.MultipartFile;
 
 /**

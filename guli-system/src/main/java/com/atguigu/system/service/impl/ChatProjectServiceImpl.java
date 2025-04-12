@@ -5,7 +5,7 @@ import com.atguigu.common.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.atguigu.system.mapper.ChatProjectMapper;
-import com.atguigu.system.domain.ChatProject;
+import com.atguigu.guli.ai.domain.ChatProject;
 import com.atguigu.system.service.IChatProjectService;
 
 /**

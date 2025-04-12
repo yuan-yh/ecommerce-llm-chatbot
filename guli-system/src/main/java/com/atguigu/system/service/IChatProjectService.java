@@ -1,7 +1,7 @@
 package com.atguigu.system.service;
 
 import java.util.List;
-import com.atguigu.system.domain.ChatProject;
+import com.atguigu.guli.ai.domain.ChatProject;
 
 /**
  * 项目配置Service接口
