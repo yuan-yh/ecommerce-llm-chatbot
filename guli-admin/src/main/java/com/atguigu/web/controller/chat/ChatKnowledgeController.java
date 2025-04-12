@@ -1,18 +1,11 @@
 package com.atguigu.web.controller.chat;
 
 import java.util.List;
-
+import com.atguigu.guli.ai.service.AiService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.atguigu.common.annotation.Log;
 import com.atguigu.common.core.controller.BaseController;
 import com.atguigu.common.core.domain.AjaxResult;
@@ -21,12 +14,11 @@ import com.atguigu.system.domain.ChatKnowledge;
 import com.atguigu.system.service.IChatKnowledgeService;
 import com.atguigu.common.utils.poi.ExcelUtil;
 import com.atguigu.common.core.page.TableDataInfo;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 知识库管理Controller
  *
- * @author lixianfeng
- * @date 2025-04-11
  */
 @RestController
 @RequestMapping("/chat/knowledge")
@@ -35,6 +27,8 @@ public class ChatKnowledgeController extends BaseController
     @Autowired
     private IChatKnowledgeService chatKnowledgeService;
 
+    @Autowired
+    private AiService aiService;
     /**
      * 查询知识库管理列表
      */
@@ -116,12 +110,13 @@ public class ChatKnowledgeController extends BaseController
         return getDataTable(list);
     }
 
-//    @PreAuthorize("@ss.hasPermi('chat:knowledge:add')")
-//    @PostMapping("upload")
-//    public AjaxResult upload(ChatKnowledge chatKnowledge, @RequestParam("file") MultipartFile file){
+    @PreAuthorize("@ss.hasPermi('chat:knowledge:add')")
+    @PostMapping("upload")
+    public AjaxResult upload(ChatKnowledge chatKnowledge, @RequestParam("file") MultipartFile file){
 //        this.aiService.upload(chatKnowledge, file);
-//        return success();
-//    }
+        this.chatKnowledgeService.upload(chatKnowledge, file);
+        return success();
+    }
 
     /**
      * 删除知识库：删除mysql中的数据(id)，删除向量数据库中的数据(knowledgeId)

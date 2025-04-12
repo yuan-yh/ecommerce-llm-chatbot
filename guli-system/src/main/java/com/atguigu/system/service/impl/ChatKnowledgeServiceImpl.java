@@ -2,23 +2,28 @@ package com.atguigu.system.service.impl;
 
 import java.util.List;
 import com.atguigu.common.utils.DateUtils;
+import com.atguigu.guli.ai.service.AiService;
+import com.atguigu.guli.ai.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.atguigu.system.mapper.ChatKnowledgeMapper;
 import com.atguigu.system.domain.ChatKnowledge;
 import com.atguigu.system.service.IChatKnowledgeService;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 知识库管理Service业务层处理
- * 
- * @author lixianfeng
- * @date 2025-04-11
+ *
  */
 @Service
 public class ChatKnowledgeServiceImpl implements IChatKnowledgeService 
 {
     @Autowired
     private ChatKnowledgeMapper chatKnowledgeMapper;
+
+    @Autowired
+    private AiService aiService;
 
     /**
      * 查询知识库管理
@@ -92,5 +97,19 @@ public class ChatKnowledgeServiceImpl implements IChatKnowledgeService
     public int deleteChatKnowledgeByKnowledgeId(Long knowledgeId)
     {
         return chatKnowledgeMapper.deleteChatKnowledgeByKnowledgeId(knowledgeId);
+    }
+
+    @Transactional
+    @Override
+    public void upload(ChatKnowledge chatKnowledge, MultipartFile file) {
+        String content = FileUtil.getContentFromFile(file);
+
+        // save in the local db (mySQL)
+        chatKnowledge.setFileName(file.getOriginalFilename());
+        chatKnowledge.setContent(content);
+        this.chatKnowledgeMapper.insertChatKnowledge(chatKnowledge);
+
+        // save in the vector db (qdrant)
+//        this.aiService.saveKnowledge(chatKnowledge.getProjectId(), chatKnowledge.getKnowledgeId(), content);
     }
 }
