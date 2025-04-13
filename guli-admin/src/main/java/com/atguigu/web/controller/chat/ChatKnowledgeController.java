@@ -1,6 +1,8 @@
 package com.atguigu.web.controller.chat;
 
 import java.util.List;
+import java.util.Map;
+
 import com.atguigu.guli.ai.service.AiService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -121,4 +123,17 @@ public class ChatKnowledgeController extends BaseController
     /**
      * 删除知识库：删除mysql中的数据(id)，删除向量数据库中的数据(knowledgeId)
      */
+    @PreAuthorize("@ss.hasPermi('chat:knowledge:remove')")
+    @DeleteMapping
+//    public AjaxResult delete(@RequestParam Long knowledgeId, @RequestParam Long projectId)
+    public AjaxResult delete(@RequestBody Map<String, Long> request) {
+        Long knowledgeId = request.get("knowledgeId");
+        Long projectId = request.get("projectId");
+        System.out.println("------------DEL: ------------");
+        System.out.println(knowledgeId);
+        System.out.println(projectId);
+        System.out.println("------------DEL: ------------");
+        this.aiService.delete(projectId.toString(), knowledgeId.toString());
+        return success();
+    }
 }
